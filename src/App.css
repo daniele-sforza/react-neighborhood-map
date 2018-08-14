@@ -1,0 +1,70 @@
+a {
+  text-decoration: none;
+}
+
+/* unvisited link */
+a:link {
+  color: #C63C22;
+}
+
+/* visited link */
+a:visited {
+  color: #C63C22;
+}
+
+/* mouse over link */
+a:hover {
+  color: coral;
+}
+
+/* selected link */
+a:active {
+  color: #C63C22;
+}
+
+.App {
+  text-align: center;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 5s linear;
+  height: 60px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 100px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: burlywood;
+  height: 100%;
+}
+
+.info-window {
+  text-align: left;
+}
+
+.details {
+  list-style-type: none;
+  padding-left: 20px;
+}
