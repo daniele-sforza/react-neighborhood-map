@@ -5,7 +5,7 @@ export class MapContainer extends Component {
 
   state = {
     selectedPlace: {},
-    activeMarker: {},
+    activeMarker: null,
     markers: [],
     showingInfoWindow: false
   }
@@ -16,12 +16,14 @@ export class MapContainer extends Component {
       activeMarker: marker,
       showingInfoWindow: showInfo});
     this.props.onSetSelected(marker.id);
+    marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
   }
 
   resetState = () => {
+    this.state.activeMarker ? this.state.activeMarker.setAnimation(null) : null;
     this.setState({
       selectedPlace: {},
-      activeMarker: {},
+      activeMarker: null,
       showingInfoWindow: false
     })
     this.props.onSetSelected('');
@@ -55,12 +57,12 @@ export class MapContainer extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    // this.resetState();
     this.getPlacesDetails(marker);
   }
 
   getPlacesDetails(marker) {
     let thisRef = this;
+    thisRef.state.activeMarker ? thisRef.state.activeMarker.setAnimation(null) : null;
     let google = this.props.google;
     var service = new google.maps.places.PlacesService(marker.map);
     service.getDetails({
