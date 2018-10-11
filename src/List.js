@@ -5,11 +5,11 @@ export class List extends Component {
     let points = this.props.points;
 
     return (
-      <div className='list'>
+      <div className="list">
         <ul>
         {
           points.map((point, idx) => (
-            <li key={idx}>{point.name}</li>    
+            <li key={idx} onClick={(e) => this.props.onSelect(point.placeId)}>{point.name}</li>
           ))
         }
         </ul>
