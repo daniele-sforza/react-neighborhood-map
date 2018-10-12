@@ -64,6 +64,10 @@ a:active {
   min-height: 100vh;
 }
 
+.filter {
+  font-size: medium;
+}
+
 .list {
   background-color: black;
   width: 20%;
@@ -71,6 +75,8 @@ a:active {
   text-align: left;
   color: white;
   flex: 1;
+  justify-content: center;
+  padding-top: 250px;
 }
 
 .list li {

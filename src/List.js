@@ -6,6 +6,7 @@ export class List extends Component {
 
     return (
       <div className="list">
+        <input type="text" className="filter" placeholder="Filter list" onChange={(e) => this.props.onFilter(e.target.value)}></input>
         <ul>
         {
           points.map((point, idx) => (

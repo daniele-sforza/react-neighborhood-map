@@ -14,19 +14,35 @@ class App extends Component {
       { name: 'Birrificio Marconi', placeId: 'ChIJ9TugWpuKJRMRWdRFbAD47m8' , location: { lat: 41.8648677, lng: 12.4695709 } },
       { name: 'Birrifugio Trastevere', placeId: 'ChIJoWOjmyNgLxMRvhKq04qWm4I' , location: { lat: 41.8776079, lng: 12.4637572 } }
     ],
+    filteredList: [],
     selected: ''
+  }
+
+  componentDidMount() {
+    this.setState({filteredList: this.state.points})
   }
 
   setSelected = (id) => {
     this.setState({selected: id})
   }
 
+  setFilter = (query) => {
+    query = query.trim();
+    let filteredList = [];
+    if (query !== '') {
+      filteredList = this.state.points.filter((poi) => poi.name.toLowerCase().includes(query.toLowerCase()))
+    }
+
+    filteredList.length === 0 ? this.setState({filteredList: this.state.points}) : this.setState({filteredList: filteredList})
+  }
+
   render() {
     return (
       <div className="App">
         <List
-          points={this.state.points}
+          points={this.state.filteredList}
           onSelect={this.setSelected}
+          onFilter={this.setFilter}
         />
 
         <div className="main">
@@ -39,7 +55,7 @@ class App extends Component {
           </div>
 
           <MapContainer
-            points={this.state.points}
+            points={this.state.filteredList}
             selected={this.state.selected}
             onSetSelected={this.setSelected}
           />

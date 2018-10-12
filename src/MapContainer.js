@@ -3,6 +3,12 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 export class MapContainer extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.mapRef = React.createRef();
+  }
+
   state = {
     selectedPlace: {},
     activeMarker: null,
@@ -20,7 +26,7 @@ export class MapContainer extends Component {
   }
 
   resetState = () => {
-    this.state.activeMarker ? this.state.activeMarker.setAnimation(null) : null;
+    if (this.state.activeMarker) this.state.activeMarker.setAnimation(null);
     this.setState({
       selectedPlace: {},
       activeMarker: null,
@@ -44,6 +50,19 @@ export class MapContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (this.props.points !== prevProps.points) {
+      this.state.markers.forEach(mrk => {
+        let hide = true;
+        for (let poi of this.props.points) {
+          if (mrk.props.id === poi.placeId) {
+            hide = false;
+            break;
+          }
+        }
+        hide ? mrk.ref.current.marker.setMap(null) : mrk.ref.current.marker.setMap(this.mapRef.current.map)
+      });
+    }
+
     if (this.props.selected !== prevProps.selected) {
       let marker = this.state.markers.filter((mrk) => 
         mrk.props.id === this.props.selected
@@ -62,7 +81,7 @@ export class MapContainer extends Component {
 
   getPlacesDetails(marker) {
     let thisRef = this;
-    thisRef.state.activeMarker ? thisRef.state.activeMarker.setAnimation(null) : null;
+    if (thisRef.state.activeMarker) thisRef.state.activeMarker.setAnimation(null);
     let google = this.props.google;
     var service = new google.maps.places.PlacesService(marker.map);
     service.getDetails({
@@ -102,6 +121,7 @@ export class MapContainer extends Component {
         containerStyle={containerStyle}
         bounds={bounds}
         onReady={this.onReady}
+        ref={this.mapRef}
       >
 
         {
