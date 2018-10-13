@@ -15,11 +15,21 @@ class App extends Component {
       { name: 'Birrifugio Trastevere', placeId: 'ChIJoWOjmyNgLxMRvhKq04qWm4I' , location: { lat: 41.8776079, lng: 12.4637572 } }
     ],
     filteredList: [],
-    selected: ''
+    selected: '',
+    showMenu: true
+  }
+
+  checkDimensions = () => {
+    this.setState({ showMenu: !(window.outerWidth < 700) })
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.checkDimensions);
     this.setState({filteredList: this.state.points})
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.checkDimensions)
   }
 
   setSelected = (id) => {
@@ -28,12 +38,16 @@ class App extends Component {
 
   setFilter = (query) => {
     query = query.trim();
-    let filteredList = [];
+    let filteredList = this.state.points;
     if (query !== '') {
       filteredList = this.state.points.filter((poi) => poi.name.toLowerCase().includes(query.toLowerCase()))
     }
 
-    filteredList.length === 0 ? this.setState({filteredList: this.state.points}) : this.setState({filteredList: filteredList})
+    this.setState({filteredList: filteredList})
+  }
+
+  toggleMenu = () => {
+    this.setState({ showMenu: !this.state.showMenu })
   }
 
   render() {
@@ -43,12 +57,15 @@ class App extends Component {
           points={this.state.filteredList}
           onSelect={this.setSelected}
           onFilter={this.setFilter}
+          toggleMenu={this.toggleMenu}
+          showMenu={this.state.showMenu}
         />
 
         <div className="main">
 
           <div className="header">
             <header className="App-header">
+              <div className="menu" onClick={this.toggleMenu}>{ (this.state.showMenu ? "X" : "☰") }</div>
               <img src={Logo} className="App-logo" alt="logo" />
               <h1 className="App-title">NeighBEERhood Map</h1>
             </header>

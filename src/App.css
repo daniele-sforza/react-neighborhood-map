@@ -36,7 +36,6 @@ a:active {
 
 .App-header {
   background-color: #222;
-  height: 120px;
   padding: 20px;
   color: white;
 }
@@ -66,20 +65,61 @@ a:active {
 
 .filter {
   font-size: medium;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 100px 0 10px 0;
 }
 
 .list {
-  background-color: black;
-  width: 20%;
-  min-width: 250px;
-  text-align: left;
+  background-color: #222;
+  height: 80%;
   color: white;
-  flex: 1;
-  justify-content: center;
-  padding-top: 250px;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  z-index: 1;
+  transition: 0.5s;
+  overflow-x: hidden;
+}
+
+.hidden {
+  width: 0;
+}
+
+.show {
+  width: 270px;
+}
+
+.list ul {
+  display:inline-block;
+  margin-left: 0;
+  padding: 0;
+  width: 220px;
 }
 
 .list li {
+  cursor: pointer;
+  list-style-type: none;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: #CE8400;
+  padding: 5px 10px 5px 10px;
+  margin: 10px 0 10px 0;
+  font-weight: bold;
+  color: #222;
+}
+
+.list li:hover {
+  background-color: #FFA800
+}
+
+.menu {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: xx-large;
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -93,7 +133,7 @@ a:active {
 .header {
   background-color: #222;
   height: 20%;
-  min-height: 120px;
+  min-height: 150px;
 }
 
 .map-cnt {
@@ -111,10 +151,4 @@ a:active {
 .details {
   list-style-type: none;
   padding-left: 20px;
-}
-
-@media screen and (max-width: 700px) {
-  .list {
-    display: none;
-  }
 }
