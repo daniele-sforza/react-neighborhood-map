@@ -145,10 +145,11 @@ a:active {
 }
 
 .info-window {
-  text-align: left;
+  text-align: center;
 }
 
 .details {
   list-style-type: none;
   padding-left: 20px;
+  text-align: left;
 }
