@@ -7,16 +7,17 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props)
 
-    this.mapRef = React.createRef();
+    this.mapRef = React.createRef();    // create map component ref
   }
 
   state = {
-    selectedPlace: {},
-    activeMarker: null,
-    markers: [],
-    showingInfoWindow: false
+    selectedPlace: {},        // place info to fill via Foursquare API
+    activeMarker: null,       // active marker to pass to the InfoWindow component
+    markers: [],              // list of marker components
+    showingInfoWindow: false  // toggle visibility of the InfoWindow component
   }
 
+  // save current POI data, active marker and animate the marker  
   updateState = (place, marker, showInfo) => {
     this.setState({ 
       selectedPlace: place,
@@ -25,6 +26,7 @@ export class MapContainer extends Component {
     marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
   }
 
+  // reset state when no POI selected
   resetState = () => {
     if (this.state.activeMarker) this.state.activeMarker.setAnimation(null);
     this.setState({
@@ -35,6 +37,7 @@ export class MapContainer extends Component {
     this.props.onSetSelected('');
   }
 
+  // create markers and populate markers list on state
   componentDidMount() {
     this.setState({markers: this.props.points.map((point, idx) => (
       <Marker
@@ -51,6 +54,7 @@ export class MapContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // on filter change, show/hide markers based on updated filtered list
     if (this.props.points !== prevProps.points) {
       this.state.markers.forEach(mrk => {
         let hide = true;
@@ -64,6 +68,7 @@ export class MapContainer extends Component {
       });
     }
 
+    // on selection change, update marker and get POI details
     if (this.props.selected !== prevProps.selected) {
       let marker = this.state.markers.filter((mrk) => 
         mrk.props.id === this.props.selected
@@ -76,21 +81,24 @@ export class MapContainer extends Component {
     map.fitBounds(this.bounds);
   }
 
+  // set selected id on marker click
   onMarkerClick = (props, marker, e) => {
     this.props.onSetSelected(marker.id);
   }
 
   getPlacesDetails(marker) {
     let thisRef = this;
-    if (thisRef.state.activeMarker) thisRef.state.activeMarker.setAnimation(null);
+    if (thisRef.state.activeMarker) thisRef.state.activeMarker.setAnimation(null);    // disable animation on current marker
     
+    // fetch data from Foursquare
     let place = {};
     fetch('https://api.foursquare.com/v2/venues/'+ marker.fsId +'?client_id=SIZPDDRGTG1KVY0QGXDKNYJA2M5PV4QSPRGQQAPN3PB3JBZ2&client_secret=0L2Z0DJE3FHF2IPWLIHI25EIZJJO3VHRVGCPKZVGMEGJRJPN&v=20180323')
-        // Code for handling API response
+        // handling API response
         .then(response => response.json())
         .then(data => {
           let venue = data.response.venue;
           
+          // populate place info
           place.name = venue.name;
           place.url = venue.shortUrl;
           place.bestPhoto = venue.bestPhoto.prefix + 'height200' + venue.bestPhoto.suffix;;
@@ -100,11 +108,11 @@ export class MapContainer extends Component {
           place.address = venue.location.address + ', ' + venue.location.city + ', ' + venue.location.country;
           place.phone = venue.contact.phone;
           place.website = venue.url;
-          place.error = false;
 
+          // update state
           thisRef.updateState(place, marker, true)
         })
-        // Code for handling errors
+        // handling errors
         .catch(e => alert("Can't load data from FourSquare. Check your connection"));
   }
 
