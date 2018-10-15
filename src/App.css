@@ -123,6 +123,10 @@ a:active {
   cursor: pointer;
 }
 
+.loading {
+  padding-top: 10%;
+}
+
 .main {
   width: 80%;
   flex: 3;

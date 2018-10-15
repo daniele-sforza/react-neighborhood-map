@@ -105,7 +105,7 @@ export class MapContainer extends Component {
           thisRef.updateState(place, marker, true)
         })
         // Code for handling errors
-        .catch(e => place.error = true);
+        .catch(e => alert("Can't load data from FourSquare. Check your connection"));
   }
 
   render() {
@@ -149,12 +149,6 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.resetState}>
-            {place.error ?
-
-            <div className="info-window"> 
-              <h2>Error loading info</h2>
-            </div> :
-
             <div className="info-window">
               <h2><a href={place.url} target='_blank'>{place.name}</a></h2>
               <img src={place.bestPhoto} alt={place.name + ' best photo'} ></img>
@@ -167,13 +161,17 @@ export class MapContainer extends Component {
               </ul>
               <img src={FourSquareLogo} alt="Powered by Foursquare"></img>
             </div>
-            }
         </InfoWindow>
       </Map>
     );
   }
 }
 
+const LoadingContainer = (props) => (
+  <div className="loading">Loading... If it's taking too long check your connection.</div>
+)
+
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAWTp0vIgXvqJNoVk26NxLTzVPQRED2-ZQ'
+  apiKey: 'AIzaSyAWTp0vIgXvqJNoVk26NxLTzVPQRED2-ZQ',
+  LoadingContainer: LoadingContainer
 })(MapContainer)
