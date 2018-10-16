@@ -39,6 +39,8 @@ export class MapContainer extends Component {
 
   // create markers and populate markers list on state
   componentDidMount() {
+    window.gm_authFailure = this.gm_authFailure;
+    
     this.setState({markers: this.props.points.map((point, idx) => (
       <Marker
         key={idx}
@@ -75,6 +77,11 @@ export class MapContainer extends Component {
       )
       if (marker.length > 0) this.getPlacesDetails(marker[0].ref.current.marker);
     }
+  }
+
+  gm_authFailure(){
+    document.querySelector('.gm-err-title').innerText = "There was an error loading Google Maps!"
+    document.querySelector('.gm-err-message').innerHTML = "<a href='javascript:window.location.reload(true)'>Try again</a>"
   }
 
   onReady(mapProps, map) {

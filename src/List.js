@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 export class List extends Component {
+  selectItem = (point) => {
+    this.props.onSelect(point.placeId); if (window.outerWidth < 700) this.props.toggleMenu()
+  }
+
   render() {
     let points = this.props.points;
 
@@ -10,7 +14,9 @@ export class List extends Component {
         <ul>
         {
           points.map((point, idx) => (
-            <li key={idx} onClick={() => {this.props.onSelect(point.placeId); if (window.outerWidth < 700) this.props.toggleMenu()}}>{point.name}</li>
+            <li key={idx} role="button" tabIndex="0" 
+              onKeyPress={(e) => {if (e.key === 'Enter') this.selectItem(point)}}
+              onClick={() => this.selectItem(point)}>{point.name}</li>
           )) 
         }
         </ul>

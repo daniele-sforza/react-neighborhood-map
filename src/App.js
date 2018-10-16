@@ -71,7 +71,7 @@ class App extends Component {
 
           <div className="header">
             <header className="App-header">
-              <div className="menu" onClick={this.toggleMenu}>{ (this.state.showMenu ? "X" : "☰") }</div>
+              <div className="menu" tabIndex="0" role="button" aria-label={ (this.state.showMenu ? "close menu" : "open menu") } onKeyPress={this.toggleMenu} onClick={this.toggleMenu}>{ (this.state.showMenu ? "X" : "☰") }</div>
               <img src={Logo} className="App-logo" alt="logo" />
               <h1 className="App-title">NeighBEERhood Map</h1>
             </header>

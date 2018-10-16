@@ -85,10 +85,12 @@ a:active {
 
 .hidden {
   width: 0;
+  visibility: hidden;
 }
 
 .show {
   width: 270px;
+  visibility: visible;
 }
 
 .list ul {
