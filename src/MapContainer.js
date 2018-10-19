@@ -108,7 +108,7 @@ export class MapContainer extends Component {
           // populate place info
           place.name = venue.name;
           place.url = venue.shortUrl;
-          place.bestPhoto = venue.bestPhoto.prefix + 'height200' + venue.bestPhoto.suffix;;
+          place.bestPhoto = venue.bestPhoto.prefix + 'height100' + venue.bestPhoto.suffix;;
           place.rating = venue.rating;
           place.likes = venue.likes.count;
           place.coordinates = venue.location.lat + ',' + venue.location.lng + '&query_place_id=' + marker.id;

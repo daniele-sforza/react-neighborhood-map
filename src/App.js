@@ -22,7 +22,8 @@ class App extends Component {
 
   //  default hide menu when screen width is less than 700px
   checkDimensions = () => {
-    this.setState({ showMenu: !(window.outerWidth < 700) })
+    // on mobile tapping on search triggers a resize event. This is to prevent hiding menu  
+    if (document.activeElement.id !== 'search') this.setState({ showMenu: !(window.outerWidth < 700) })
   }
 
   componentDidMount() {

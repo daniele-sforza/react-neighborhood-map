@@ -10,7 +10,7 @@ export class List extends Component {
 
     return (
       <div className={"list " + (this.props.showMenu ? 'show' : 'hidden')} >
-        <input type="search" className="filter" placeholder="Filter list" aria-label="filter list" onChange={(e) => this.props.onFilter(e.target.value)}></input>
+        <input id="search" type="search" className="filter" placeholder="Filter list" aria-label="filter list" onChange={(e) => this.props.onFilter(e.target.value)}></input>
         <ul>
         {
           points.map((point, idx) => (
