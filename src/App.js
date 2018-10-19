@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.checkDimensions();                                     // initialize menu base on screen width
     window.addEventListener("resize", this.checkDimensions);    // attach the function to resize event
     this.setState({filteredList: this.state.points})            // set filteredList equal to POI list 
   }
