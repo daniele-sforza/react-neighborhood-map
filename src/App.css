@@ -123,6 +123,7 @@ a:active {
   font-size: xx-large;
   z-index: 2;
   cursor: pointer;
+  outline: none;
 }
 
 .loading {
