@@ -13,7 +13,11 @@ class App extends Component {
       { name: 'Open Baladin Roma', placeId: 'ChIJ2ZqDxUhgLxMR1L9c5ZoryBg' , location: { lat: 41.893488, lng: 12.4724373 }, fsId: '4b815a15f964a520ffa030e3' },
       { name: 'Stavio', placeId: 'ChIJuzIfvSdgLxMRZCtEdHt7n3E' , location: { lat: 41.8720929, lng: 12.4683256 }, fsId: '5411cfd6498e0bce59a3f197' },
       { name: 'Birrificio Marconi', placeId: 'ChIJ9TugWpuKJRMRWdRFbAD47m8' , location: { lat: 41.8648677, lng: 12.4695709 }, fsId: '578bd740498e33f23f11a823' },
-      { name: 'Birrifugio Trastevere', placeId: 'ChIJoWOjmyNgLxMRvhKq04qWm4I' , location: { lat: 41.8776079, lng: 12.4637572 }, fsId: '4b7456a0f964a5202fd62de3' }
+      { name: 'Birrifugio Trastevere', placeId: 'ChIJoWOjmyNgLxMRvhKq04qWm4I' , location: { lat: 41.8776079, lng: 12.4637572 }, fsId: '4b7456a0f964a5202fd62de3' },
+      { name: 'Il Ponticello', placeId: 'ChIJy4bN7YyKJRMRjod2A48TFRo' , location: { lat: 41.8517081, lng: 12.4743566 }, fsId: '509c0c5fe4b0a2dcab163894' },
+      { name: 'Hopside', placeId: 'ChIJV0jc6ypgLxMRi0aGs9hKAN4' , location: { lat: 41.870453, lng: 12.4800437 }, fsId: '52a23bb1498e314da474925d' },
+      { name: 'Brasserie 4:20', placeId: 'ChIJedEe6SRgLxMRa4izlF2wgpo' , location: { lat: 41.878588, lng: 12.4681703 }, fsId: '4bf45328ff90c9b60d1b5528' }
+
     ],
     filteredList: [],   // filtered list of POI
     selected: '',       // selected place id
