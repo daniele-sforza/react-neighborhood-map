@@ -1,7 +1,23 @@
 {
-  "main.css": "static/css/main.1c83c495.css",
-  "main.css.map": "static/css/main.1c83c495.css.map",
-  "main.js": "static/js/main.3592148c.js",
-  "main.js.map": "static/js/main.3592148c.js.map",
-  "static\\media\\logo.svg": "static/media/logo.a266a13f.svg"
+  "files": {
+    "main.css": "/react-neighborhood-map/static/css/main.86376d17.chunk.css",
+    "main.js": "/react-neighborhood-map/static/js/main.643a51a1.chunk.js",
+    "main.js.map": "/react-neighborhood-map/static/js/main.643a51a1.chunk.js.map",
+    "runtime-main.js": "/react-neighborhood-map/static/js/runtime-main.72ec8d86.js",
+    "runtime-main.js.map": "/react-neighborhood-map/static/js/runtime-main.72ec8d86.js.map",
+    "static/js/2.86e63b55.chunk.js": "/react-neighborhood-map/static/js/2.86e63b55.chunk.js",
+    "static/js/2.86e63b55.chunk.js.map": "/react-neighborhood-map/static/js/2.86e63b55.chunk.js.map",
+    "index.html": "/react-neighborhood-map/index.html",
+    "precache-manifest.1a9b3e042ca20bd81fe19d912ed7bb90.js": "/react-neighborhood-map/precache-manifest.1a9b3e042ca20bd81fe19d912ed7bb90.js",
+    "service-worker.js": "/react-neighborhood-map/service-worker.js",
+    "static/css/main.86376d17.chunk.css.map": "/react-neighborhood-map/static/css/main.86376d17.chunk.css.map",
+    "static/js/2.86e63b55.chunk.js.LICENSE": "/react-neighborhood-map/static/js/2.86e63b55.chunk.js.LICENSE",
+    "static/media/logo.svg": "/react-neighborhood-map/static/media/logo.a266a13f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.72ec8d86.js",
+    "static/js/2.86e63b55.chunk.js",
+    "static/css/main.86376d17.chunk.css",
+    "static/js/main.643a51a1.chunk.js"
+  ]
 }
