@@ -165,14 +165,14 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
           onClose={this.resetState}>
             <div className="info-window">
-              <h2><a href={place.url} target='_blank'>{place.name}</a></h2>
+              <h2><a href={place.url} target='_blank' rel='noopener noreferrer'>{place.name}</a></h2>
               <img src={place.bestPhoto} alt={place.name + ' best photo'} ></img>
               <ul className="details">
                 <li><strong>Rating:</strong> {place.rating}</li>
                 <li><strong>Likes:</strong> {place.likes}</li>
-                <li><strong>Address: </strong><a href={'https://www.google.com/maps/search/?api=1&query=' + place.coordinates} target='_blank'>{place.address}</a></li>
+                <li><strong>Address: </strong><a href={'https://www.google.com/maps/search/?api=1&query=' + place.coordinates} target='_blank' rel='noopener noreferrer'>{place.address}</a></li>
                 <li><strong>Phone No.:</strong> {place.phone}</li>
-                <li><strong>Website: </strong><a href={place.website} target='_blank'>{place.website}</a></li>
+                <li><strong>Website: </strong><a href={place.website} target='_blank' rel='noopener noreferrer'>{place.website}</a></li>
               </ul>
               <img src={FourSquareLogo} alt="Powered by Foursquare"></img>
             </div>
